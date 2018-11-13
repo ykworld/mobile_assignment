@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="coord"
+            type="com.yk.mobileassignment.model.Coord" />
+
+        <variable
+            name="viewModel"
+            type="com.yk.mobileassignment.viewmodel.MainViewModel" />
+
+        <variable
+            name="city"
+            type="java.lang.String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> viewModel.onItemClick(coord)}"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{city}" />
+
+    </LinearLayout>
+
+</layout>
