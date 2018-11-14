@@ -18,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:clickable="true"
         android:focusable="true"
         android:onClick="@{() -> viewModel.onItemClick(coord)}"
@@ -27,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="20sp"
             android:text="@{city}" />
 
     </LinearLayout>

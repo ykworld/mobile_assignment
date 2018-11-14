@@ -8,6 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.yk.mobileassignment.R;
 import com.yk.mobileassignment.constants.Constants;
@@ -17,11 +21,12 @@ import com.yk.mobileassignment.ui.list.CityListFragment;
 import com.yk.mobileassignment.ui.map.MapFragment;
 import com.yk.mobileassignment.viewmodel.MainViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private MainViewModel viewModel;
     private FragmentManager manager;
     private CityListFragment cityListFragment;
     private MapFragment mapFragment;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,4 +77,28 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.menu_main_search);
+        searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.query_hint));
+        searchView.setOnQueryTextListener(this);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        viewModel.onTextChanged(s);
+        return false;
+    }
 }
