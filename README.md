@@ -1,4 +1,4 @@
-#Mobile assignment RnD
+# Mobile assignment RnD
 
 The goal of this assignment is to evaluate the problem solving skills, UX judgement and code quality of the candidate.
 We have a list of cities containing around 200k entries in JSON format. Each entry contains the following information:
